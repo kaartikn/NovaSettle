@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>NovaSettle | Decentralized Leveraged Loan Marketplace</title>
+    <meta name="description" content="A decentralized leveraged loan marketplace built on Solana blockchain. Create loan tokens, provide collateral, and buy loan tokens from the marketplace." />
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="NovaSettle | Decentralized Loan Marketplace" />
+    <meta property="og:description" content="Create and buy loan tokens on the Solana blockchain with atomic settlement." />
+    <link rel="icon" href="/logo.jpeg" type="image/jpeg" />
+    <meta property="og:type" content="website" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <!-- Phantom Wallet Detection Script -->
+    <script>
+      window.onload = function() {
+        if (!window.phantom) {
+          console.log("Phantom wallet extension not detected");
+        } else {
+          console.log("Phantom wallet extension detected");
+          console.log("Phantom wallet version:", window.phantom.solana?.version);
+          console.log("Is connected:", window.phantom.solana?.isConnected);
+          console.log("Public key available:", !!window.phantom.solana?.publicKey);
+          
+          // Test connection directly
+          if (window.phantom.solana) {
+            console.log("Testing direct connection to Phantom...");
+            window.testPhantomConnection = async function() {
+              try {
+                console.log("Attempting to connect to Phantom directly...");
+                const resp = await window.phantom.solana.connect();
+                console.log("Direct connection successful:", resp);
+              } catch (e) {
+                console.error("Direct connection failed:", e);
+              }
+            };
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
